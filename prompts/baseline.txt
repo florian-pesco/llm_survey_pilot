@@ -1,0 +1,8 @@
+You will try to predict the required time for a survey question as accurate as possible.
+
+Consider the following survey question:
+
+Question: {QUESTION_TEXT}
+Options: {CODE_DOMAIN}
+
+Based on its length, complexity, and the cognitive effort required to answer, estimate the median time in seconds a respondent will take to complete it.

@@ -1,0 +1,158 @@
+[
+  {
+    "id": "sat6",
+    "question_text": "All things considered, how satisfied are you with your life as a whole nowadays? Please note that 0 means 'not at all satisfied' and 10 means 'completely satisfied' and 5 means about average.",
+    "code_domain": {
+      "0": "Not at all satisfied",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "Completely satisfied"
+    }
+  },
+  {
+    "id": "sd3",
+    "question_text": "Do you have a partner at the moment?",
+    "code_domain": {
+      "1": "Yes",
+      "2": "No"
+    }
+  },
+  {
+    "id": "inc23",
+    "question_text": "Can you please categorise the net income of your household in the past month, meaning the income of all members of your household after taxes and contributions to social insurance are deducted? This refers to the sum resulting from wages, salary, income from self-employment, retirement or pensions. Please also add income from public assistance, income from renting and leasing, assets, housing allowance, child benefits and other income. If you are self-employed: Please estimate your monthly profit after taxes.",
+    "code_domain": {
+      "1": "Under 250 euros",
+      "2": "250 to under 500 euros",
+      "3": "500 to under 750 euros",
+      "4": "750 to under 1,000 euros",
+      "5": "1,000 to under 1,250 euros",
+      "6": "1,250 to under 1,500 euros",
+      "7": "1,500 to under 1,750 euros",
+      "8": "1,750 to under 2,000 euros",
+      "9": "2,000 to under 2,500 euros",
+      "10": "2,500 to under 3,000 euros",
+      "11": "3,000 to under 3,500 euros",
+      "12": "3,500 to under 4,000 euros",
+      "13": "4,000 to under 4,500 euros",
+      "14": "4,500 and more euros",
+      "-1": "Do not know"
+    }
+  },
+  {
+    "id": "lsr30",
+    "question_text": "Do you have internet at home? This can be a connection via a landline, cable or mobile internet, for example via a smart phone.",
+    "code_domain": {
+      "1": "Yes",
+      "2": "No"
+    }
+  },
+  {
+    "id": "sd55",
+    "question_text": "What best describes your current situation? If more than one category fits, select the option that best describes your situation.",
+    "code_domain": {
+      "1": "In education or training",
+      "2": "Employed",
+      "3": "Self-employed",
+      "4": "Helping family member in a business or family farm",
+      "5": "Unemployed",
+      "6": "Retired",
+      "7": "In military or civic service",
+      "8": "Taking care of the home or family",
+      "9": "On maternity or paternity leave",
+      "10": "On parental leave or childcare leave",
+      "11": "Ill or disabled for a long time or permanently",
+      "12": "Other"
+    }
+  },
+  {
+    "id": "omo2",
+    "question_text": "Thinking about the measures policymakers in Germany have taken to fight the Corona virus since the beginning of the pandemic: Have policymakers in Germany done too much, just enough, or too little to fight the Corona virus?",
+    "code_domain": {
+      "1": "Too much",
+      "2": "Just enough",
+      "3": "Too little"
+    }
+  },
+  {
+    "id": "inc52",
+    "question_text": "A household may have different sources of income and more than one household member may contribute to it. Thinking of your household's total monthly income, is your household able to make ends meet?",
+    "code_domain": {
+      "1": "With great difficulty",
+      "2": "With difficulty",
+      "3": "With some difficulty",
+      "4": "Fairly easily",
+      "5": "Easily",
+      "6": "Very easily"
+    }
+  },
+  {
+    "id": "sat3",
+    "question_text": "How satisfied are you with your relationship with your partner? Please note that 0 means 'not at all satisfied', 10 means 'completely satisfied', and 5 means 'about average'.",
+    "code_domain": {
+      "0": "Not at all satisfied",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "Completely satisfied"
+    }
+  },
+  {
+    "id": "pa60",
+    "question_text": "How did you and your partner meet?",
+    "code_domain": {
+      "1": "Through education (school, university, college, etc.)",
+      "2": "Through work",
+      "3": "Through a hobby, an association, or sport",
+      "4": "At a bar, nightclub, or dance club",
+      "5": "Through friends",
+      "6": "Through family",
+      "7": "Through an ad",
+      "8": "Through online dating",
+      "9": "Through social networks, chatrooms, or similar platforms online",
+      "10": "On vacation",
+      "11": "Other"
+    }
+  },
+  {
+    "id": "sd40",
+    "question_text": "Has this partnership already existed for at least three months?",
+    "code_domain": {
+      "1": "Yes",
+      "2": "No"
+    }
+  },
+  {
+    "id": "sd61",
+    "question_text": "At what type of college or institution did you earn this degree (or the highest of these degrees)?",
+    "code_domain": {
+      "1": "College of advanced vocational studies",
+      "2": "College of Administration",
+      "3": "University of applied sciences, engineering school, or other non-university higher education facility",
+      "4": "University (scientific university, also art school, pedagogical university, theological university)"
+    }
+  },
+  {
+    "id": "lsr31",
+    "question_text": "On a typical day, how many hours do you spend using the internet? Please give the total amount of time you use the internet on a computer, tablet, mobile phone, or another device, whether for work-related or private use, either at home or on the go.",
+    "code_domain": {
+      "0": "None",
+      "1": "1 hour or less",
+      "2": "1–2 hours",
+      "3": "2–4 hours",
+      "4": "More than 4 hours"
+    }
+  }
+]

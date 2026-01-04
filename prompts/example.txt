@@ -1,0 +1,28 @@
+I will provide you with examples of survey questions and their actual median response times:
+
+- Example 1:
+    What is your marital status? Which of the following in the list applies to you?
+    'Registered civil partnership' means that it is or has been a same-sex partnership within the meaning of the Act on Registered Life Partnerships (Lebenspartnerschaftsgesetz).
+    Code Domain:
+        1) Married and live together with my spouse
+        2) In a registered civil partnership and live together (same-sex)
+        3) Married and live separately from my spouse
+        4) Single
+        5) Divorced
+        6) Widowed
+        7) In a registered civil partnership and live separately (same-sex)
+        8) Registered civil partnership annulled (same-sex)
+        9) Registered civil partner has passed (same-sex)
+    Median response time: 30.80 seconds
+
+- Example 2: 
+    Does your partner live with you in the same household?
+    Code Domain:
+        1) Yes
+        2) No
+    Median response time: 4.88 seconds
+
+Now, based on these benchmarks, predict the response time in seconds for this question:
+
+Question: {QUESTION_TEXT}
+Options: {CODE_DOMAIN}

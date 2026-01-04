@@ -1,0 +1,11 @@
+Estimate the response time for the survey question:
+Question: {QUESTION_TEXT}
+Options: {CODE_DOMAIN}
+
+Break your estimation down into these steps:
+
+- Reading time: Based on word count/complexity.
+- Comprehension time: Based on the difficulty of the concept.
+- Selection time: Based on the difficulty of decision between the options.
+
+Sum these up and provide the final predicted time in seconds.

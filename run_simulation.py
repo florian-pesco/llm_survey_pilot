@@ -9,11 +9,24 @@ def call_llm(prompt):
     
     return ollama(prompt)
 
+def clean_llm_output(text):
+    text = text.strip()
+    
+    text = re.sub(r"^```json", "", text, flags=re.IGNORECASE).strip()
+    text = re.sub(r"^```", "", text).strip()
+    text = re.sub(r"```$", "", text).strip()
+
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+    if not match:
+        return None
+    return match.group(0)
+
+
 def ollama(prompt):
     import requests
     
     MODEL = "llama3.2:3b"
-    TEMPERATURE = 0.7
+    TEMPERATURE = 0.3
     
     r = requests.post(
         "http://localhost:11434/api/generate",
@@ -25,13 +38,20 @@ def ollama(prompt):
         }
     )
 
-    raw = r.json()["response"].strip()
-    print(raw)
-    try:
-        data = json.loads(raw)
-    except json.JSONDecodeError:
-        print("Could not parse JSON:", raw)
+    raw = r.json()["response"]
+    json_str = clean_llm_output(raw)
+    
+    if json_str is None:
+        print("No JSON object found:", raw)
         return None
+    
+    try:
+        data = json.loads(json_str)
+    except json.JSONDecodeError as e:
+        print("JSON parse error:", e)
+        print("Raw:", raw)
+        return None
+    
     time = data.get("total_predicted_duration", -1)
     print(time)
     return time
@@ -55,10 +75,12 @@ def get_question_data(q_id, questions_json):
 def format_domain(domain_dict):
     return ", ".join([f"{k}: {v}" for k, v in domain_dict.items()])
 
+
+
 NUM_ITER = 1
 
 response_format = f"""
-Respond ONLY in valid JSON:
+Respond ONLY in valid JSON in the following format:
 {{
   "explanation": "string",
   "total_predicted_duration": number

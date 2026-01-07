@@ -42,18 +42,14 @@ def ollama(prompt):
     json_str = clean_llm_output(raw)
     
     if json_str is None:
-        print("No JSON object found:", raw)
         return None
     
     try:
         data = json.loads(json_str)
     except json.JSONDecodeError as e:
-        print("JSON parse error:", e)
-        print("Raw:", raw)
         return None
     
     time = data.get("total_predicted_duration", -1)
-    print(time)
     return time
 
 def load_prompt(filename):
@@ -77,7 +73,7 @@ def format_domain(domain_dict):
 
 
 
-NUM_ITER = 1
+NUM_ITER = 10
 
 response_format = f"""
 Respond ONLY in valid JSON in the following format:
@@ -105,22 +101,19 @@ def main():
         q_info = get_question_data(q_id, questions)
         q_text = q_info['question_text']
         q_dom = format_domain(q_info['code_domain']) 
-        
-        print("question: "+ q_id + ": "+ q_text)
+    
 
         for i in range(NUM_ITER):
-            print("Baseline: ")
+            
             # Prompttechnique 1: baseline
             prompt_baseline = template_baseline.format(QUESTION_TEXT=q_text, CODE_DOMAIN=q_dom) + "\n" + response_format
             res_baseline = call_llm(prompt_baseline)
 
             # Prompttechnique 2: example
-            print("Example: ")
             prompt_example = template_example.format(QUESTION_TEXT=q_text, CODE_DOMAIN=q_dom) + "\n" + response_format
             res_example = call_llm(prompt_example)
             
             # Prompttechnique 3: chain of thought
-            print("CoT: ")
             prompt_chain_of_thought = template_chain_of_thought.format(
                 QUESTION_TEXT=q_text, 
                 CODE_DOMAIN=q_dom,
@@ -139,7 +132,6 @@ def main():
     # Save to CSV
     output_df = pd.DataFrame(results)
     output_df.to_csv('results/predictions.csv', index=False)
-    print("Simulation complete. Results saved to results/predictions.csv")
 
 if __name__ == "__main__":
     main()

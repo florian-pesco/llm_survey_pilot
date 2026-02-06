@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from langchain_openai import AzureChatOpenAI
 load_dotenv()
 
+TEMPERATURE = 1
+
 def call_llm(prompt):
     """
     Plug in LLM call.
@@ -15,7 +17,7 @@ def call_llm(prompt):
         openai_api_version=os.getenv('AZURE_OPENAI_API_VERSION'),
         azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
         api_key=os.getenv('AZURE_OPENAI_API_KEY'),
-        temperature=1,
+        temperature=TEMPERATURE,
         reasoning_effort="low",
         max_completion_tokens=10000,
         timeout=120,
@@ -57,7 +59,7 @@ def ollama(prompt):
     import requests
     
     MODEL = "llama3.2:3b"
-    TEMPERATURE = 0.3
+
     
     r = requests.post(
         "http://localhost:11434/api/generate",

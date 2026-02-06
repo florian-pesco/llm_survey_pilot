@@ -1,13 +1,44 @@
 import pandas as pd
 import json
 import re
+import os
+from dotenv import load_dotenv
+from langchain_openai import AzureChatOpenAI
+load_dotenv()
 
 def call_llm(prompt):
     """
     Plug in LLM call.
     """
+    llm = AzureChatOpenAI(
+        azure_deployment=os.getenv('AZURE_OPENAI_DEPLOYMENT_NAME'),
+        openai_api_version=os.getenv('AZURE_OPENAI_API_VERSION'),
+        azure_endpoint=os.getenv('AZURE_OPENAI_ENDPOINT'),
+        api_key=os.getenv('AZURE_OPENAI_API_KEY'),
+        temperature=1,
+        reasoning_effort="low",
+        max_completion_tokens=10000,
+        timeout=120,
+    )
+
+    try:
+        response = llm.invoke(prompt)
+        raw_text = response.content
+    except Exception as e:
+        print(f"Azure API Error: {e}")
+        return None
+
+    json_str = clean_llm_output(raw_text)
     
-    return ollama(prompt)
+    if json_str is None:
+        return None
+    
+    try:
+        data = json.loads(json_str)
+    except json.JSONDecodeError:
+        return None
+    
+    return data.get("total_predicted_duration", -1)
 
 def clean_llm_output(text):
     text = text.strip()
@@ -98,12 +129,14 @@ def main():
 
     target_questions = get_question_ids(questions)
     for q_id in target_questions:
+        print(f"Processing question {q_id}")
         q_info = get_question_data(q_id, questions)
         q_text = q_info['question_text']
         q_dom = format_domain(q_info['code_domain']) 
     
 
         for i in range(NUM_ITER):
+            print(f"\tIteration {i}")
             
             # Prompttechnique 1: baseline
             prompt_baseline = template_baseline.format(QUESTION_TEXT=q_text, CODE_DOMAIN=q_dom) + "\n" + response_format
@@ -131,6 +164,7 @@ def main():
 
     # Save to CSV
     output_df = pd.DataFrame(results)
+    os.makedirs("results", exist_ok=True)
     output_df.to_csv('results/predictions.csv', index=False)
 
 if __name__ == "__main__":

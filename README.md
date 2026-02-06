@@ -11,10 +11,15 @@ The goal of the project is to compare different **prompt engineering strategies*
 Project Structure
 
 run_simulation.py
+
 data/questions.json
+
 prompts/baseline.txt
+
 prompts/example.txt
+
 prompts/chain_of_thought.txt
+
 results/
 
 
@@ -69,3 +74,12 @@ All model-specific logic is contained in a single function:
 
 ```python
 call_llm(prompt)
+```
+
+---
+
+## Running the Simulation
+
+Before execution, configure the LLM backend either by providing the required environment variables in a `.env` file or by modifying the `call_llm(prompt)` function to match the preferred API or model. Survey questions and prompt templates are loaded automatically from the `data/` and `prompts/` directories, respectively. After configuration, run the main simulation script to generate predicted response times, which are written to the `results/` directory.
+
+

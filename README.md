@@ -59,7 +59,6 @@ Contains prompt templates used for different prompt engineering strategies:
 Output directory.  
 The script writes one or more CSV files containing predicted response times for each survey question and prompt technique.
 
-> If the directory does not exist, it should be created automatically by the script.
 
 ---
 
